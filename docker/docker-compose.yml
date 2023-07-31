@@ -1,0 +1,29 @@
+version: '2.4'
+
+services:
+  husky:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rdb/husky:latest
+    container_name: rdb-husky
+    restart: "no"
+    volumes:
+      - ../src:/app:ro
+    network_mode: none
+    ulimits:
+      memlock: -1
+      stack: 67108864
+
+  husky-with-net:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rdb/husky:latest
+    container_name: rdb-husky
+    restart: "no"
+    volumes:
+      - ../src:/app:ro
+    ulimits:
+      memlock: -1
+      stack: 67108864
